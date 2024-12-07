@@ -3,6 +3,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import React, { useState } from 'react'
 import { addProductFormData } from '@/components/common'
 import Form from '@/components/form/form'
+import ImageUploader from '@/components/admin/imageUploader'
 
 const initialState = {
   image:null,
@@ -16,9 +17,13 @@ const initialState = {
 const Products = () => {
   const [openCreateProduct,setOpenCreateProduct] = useState(false)
   const [formData,setFormData] = useState(initialState)
+  const [imageFile,setImageFile] = useState(null)
+  const [uploadedImage,setUploadedImage] = useState("")
   const onSubmit = (event)=>{
     event.preventDefault(); // Prevent form default submission behavior
     console.log('Form Submitted:', formData);
+    console.log(imageFile,"image file")
+    console.log(uploadedImage,"uploaded image")
     setFormData(initialState)
   }
   return (
@@ -32,8 +37,9 @@ const Products = () => {
       <Sheet open={openCreateProduct} onOpenChange={()=>setOpenCreateProduct(false)}>
         <SheetContent side="right" className="overflow-auto">
           <SheetHeader>
-            <SheetTitle>Add New Product</SheetTitle>
+            <SheetTitle className="text-center text-2xl mb-2">Add New Product</SheetTitle>
           </SheetHeader>
+          <ImageUploader imageFile={imageFile} setImageFile={setImageFile} uploadedImage={uploadedImage} setUploadedImage={setUploadedImage}/>
           <div className='py-6'>
             <Form formControllers={addProductFormData} onSubmit={onSubmit} buttonText="Add Product" formData={formData} setFormData={setFormData} />
           </div>
