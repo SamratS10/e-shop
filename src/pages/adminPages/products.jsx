@@ -12,7 +12,8 @@ const initialState = {
   category:"",
   brand:"",
   price:"",
-  salePrice:""
+  salePrice:"",
+  quantity:""
 }
 const Products = () => {
   const [openCreateProduct,setOpenCreateProduct] = useState(false)

@@ -89,8 +89,14 @@ export const addProductFormData = [{
     placeholder:"Enter product price"
 },{
     name:"salePrice",
-    label:"Sales Price",
+    label:"Sale Price",
     componentType:"input",
     type:"number",
     placeholder:"Enter product sales price(optional)"
+},{
+    name:"quantity",
+    label:"Quantity",
+    componentType:"input",
+    type:"number",
+    placeholder:"Enter product quantity"
 }]

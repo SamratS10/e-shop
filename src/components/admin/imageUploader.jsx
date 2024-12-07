@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { Label } from '../ui/label';
 import { FileIcon, UploadCloud, XIcon } from 'lucide-react';
 import { Button } from '../ui/button';
+import axios from 'axios';
 
 const ImageUploader = ({ imageFile, setImageFile, uploadedImage, setUploadedImage }) => {
   const inputImage = useRef(null);
@@ -25,17 +26,25 @@ const ImageUploader = ({ imageFile, setImageFile, uploadedImage, setUploadedImag
 
   const handleRemoveImage = () => {
     setImageFile(null);
-    setUploadedImage(null);
+    setUploadedImage("");
     if (inputImage.current) {
       inputImage.current.value = '';
     }
   };
+  const uploadToCloudinary = async(file)=>{
+    const data = new FormData()
+    data.append("my_file",file)
+    const response = await axios.post("http://localhost:8001/api/product/upload-image",data)
+    if(response.data?.success) setUploadedImage(response.data?.result?.url)
+    console.log(response,"response")
+  }
 
   useEffect(() => {
     if (imageFile) {
-      const reader = new FileReader();
-      reader.onload = () => setUploadedImage(reader.result);
-      reader.readAsDataURL(imageFile);
+      // const reader = new FileReader();
+      // reader.onload = () => setUploadedImage(reader.result);
+      // reader.readAsDataURL(imageFile);
+      uploadToCloudinary(imageFile)
     }
   }, [imageFile, setUploadedImage]);
 
