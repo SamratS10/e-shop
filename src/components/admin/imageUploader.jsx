@@ -4,7 +4,7 @@ import { FileIcon, UploadCloud, XIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 import axios from 'axios';
 
-const ImageUploader = ({ imageFile, setImageFile, uploadedImage, setUploadedImage }) => {
+const ImageUploader = ({ imageFile, setImageFile, uploadedImage, setUploadedImage,edit }) => {
   const inputImage = useRef(null);
 
   const handleDragOver = (event) => {
@@ -55,7 +55,7 @@ const ImageUploader = ({ imageFile, setImageFile, uploadedImage, setUploadedImag
         onDragOver={handleDragOver}
         onDrop={handleDrop}
         onClick={() => inputImage.current?.click()}
-        className="w-full mt-2 border-dashed border border-black p-4 text-center cursor-pointer"
+        className={`${edit?" opacity-60":""}w-full mt-2 border-dashed border border-black p-4 text-center cursor-pointer`}
       >
         <input
           type="file"
@@ -63,9 +63,10 @@ const ImageUploader = ({ imageFile, setImageFile, uploadedImage, setUploadedImag
           className="hidden"
           ref={inputImage}
           onChange={handleImageChange}
+          disabled = {edit}
         />
         {!imageFile ? (
-          <div className="flex flex-col items-center w-full h-20 py-1">
+          <div className={`${edit ? "cursor-not-allowed":""}flex flex-col items-center w-full h-20 py-1`}>
             <UploadCloud className="w-10 h-12" />
             <span>Drag & Drop or click here to upload an image</span>
           </div>

@@ -46,10 +46,11 @@ export const fetchProducts = createAsyncThunk("product/get",async(_,{rejectWithV
     }
 })
 
-export const editProduct = createAsyncThunk("product/edit",async({id,data},{rejectWithValue})=>{
+export const editProduct = createAsyncThunk("product/edit",async({id,formData},{rejectWithValue})=>{
     try{
         const token = localStorage.getItem('token');
-        const response = await axios.put(`${baseUrl}/api/product/edit-product/${id}`,data,{
+        //console.log(formData)
+        const response = await axios.put(`${baseUrl}/api/product/edit-product/${id}`,formData,{
             headers:{
                 Authorization:`Bearer ${token}`
             }
