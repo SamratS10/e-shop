@@ -39,7 +39,9 @@ function MenuItems({ setOpen,setActive,active }) {
             setOpen ? setOpen(false) : null;
             setActive(menuItem.label)
           }}
-          className={`flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground ${menuItem.label===active ? "bg-slate-300" : ""}`}
+          className={`flex items-center gap-3 p-3 text-lg rounded-md cursor-pointer hover:bg-primary hover:text-primary-foreground ${
+            menuItem.label === active ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+          }`}
         >
           {menuItem.icon}
           <span>{menuItem.label}</span>
@@ -48,39 +50,64 @@ function MenuItems({ setOpen,setActive,active }) {
     </nav>
   );
 }
-
+// {`flex items-center gap-3 p-3 text-lg rounded-md cursor-pointer hover:bg-primary hover:text-primary-foreground ${
+//   menuItem.label === active ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+// }`}
+//flex cursor-pointer text-xl items-center gap-2 rounded-md px-3 py-2 text-muted-foreground hover:bg-muted hover:text-foreground ${menuItem.label===active ? "bg-slate-300" : ""}
 function AdminSideBar({ open, setOpen }) {
   const navigate = useNavigate();
   const[active,setActive] = useState("Dashboard")
   return (
     <Fragment>
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetContent side="left" className="w-64">
-          <div className="flex flex-col h-full">
-            <SheetHeader className="border-b">
-              <SheetTitle className="flex gap-2 mt-5 mb-5">
+        <SheetContent side="left" className="w-64 bg-background shadow-lg">
+          <div className="flex flex-col h-full sticky top-0 z-50">
+            <SheetHeader className="border-b pb-4">
+              <SheetTitle className="flex items-center gap-3 text-xl font-extrabold text-foreground">
                 <SiGoogleanalytics size={30} />
-                <h1 className="text-2xl font-extrabold">Admin Panel</h1>
+                Admin Panel
               </SheetTitle>
             </SheetHeader>
-            <MenuItems setOpen={setOpen} />
+            <MenuItems setOpen={setOpen} active={active} setActive={setActive} />
           </div>
         </SheetContent>
       </Sheet>
-      <aside className="hidden w-64 flex-col border-r bg-background p-6 lg:flex">
-        <div
-          onClick={() => {
-            navigate("/admin/dashboard")
-            setActive("Dashboard")
-          }}
-          className="flex cursor-pointer items-center gap-2"
-        >
+      <aside className="hidden lg:flex flex-col w-64 bg-card shadow-md p-6">
+        <div className="flex items-center gap-3 cursor-pointer text-primary text-xl font-extrabold mb-4">
           <SiGoogleanalytics size={30} />
-          <h1 className="text-2xl font-extrabold">Admin Panel</h1>
+          Admin Panel
         </div>
         <MenuItems active={active} setActive={setActive} />
       </aside>
     </Fragment>
+    // <Fragment>
+    //   <Sheet open={open} onOpenChange={setOpen}>
+    //     <SheetContent side="left" className="w-64">
+    //       <div className="flex flex-col h-full">
+    //         <SheetHeader className="border-b">
+    //           <SheetTitle className="flex gap-2 mt-5 mb-5">
+    //             <SiGoogleanalytics size={30} />
+    //             <h1 className="text-2xl font-extrabold">Admin Panel</h1>
+    //           </SheetTitle>
+    //         </SheetHeader>
+    //         <MenuItems setOpen={setOpen} />
+    //       </div>
+    //     </SheetContent>
+    //   </Sheet>
+    //   <aside className="hidden w-64 flex-col border-r bg-background p-6 lg:flex">
+    //     <div
+    //       onClick={() => {
+    //         navigate("/admin/dashboard")
+    //         setActive("Dashboard")
+    //       }}
+    //       className="flex cursor-pointer items-center gap-2"
+    //     >
+    //       <SiGoogleanalytics size={30} />
+    //       <h1 className="text-2xl font-extrabold">Admin Panel</h1>
+    //     </div>
+    //     <MenuItems active={active} setActive={setActive} />
+    //   </aside>
+    // </Fragment>
   );
 }
 

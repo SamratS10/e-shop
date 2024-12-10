@@ -13,7 +13,7 @@ const AdminHeader = ({setOpen}) => {
     navigate('/auth/login'); // Redirect to login page after logout
 };
   return (
-    <header className="flex justify-between items-center px-4 py-3 bg-background border-b">
+    <header className="flex justify-between items-center px-4 py-3 bg-gradient-accent border-b sticky top-0 z-50">
       <Button onClick={() => setOpen(true)} className="lg:hidden sm:block">
         <GiHamburgerMenu fontSize={30} />  
       </Button>

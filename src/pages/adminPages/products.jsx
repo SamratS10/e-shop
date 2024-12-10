@@ -90,9 +90,9 @@ const Products = () => {
   }
   //console.log("products response",products)
   return (
-    <div className='w-full'>
-      <div className='w-full flex'>
-        <Button onClick={()=>setOpenCreateProduct(true)}>
+    <div className='w-full bg-black h-screen overflow-auto'>
+      <div className='w-full flex m-3'>
+        <Button variant="secondary" onClick={()=>setOpenCreateProduct(true)}>
           Add Products
         </Button>
       </div>

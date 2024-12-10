@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Main brand color - Deep Navy Blue */
+    --primary: 215 89% 28%;
+    --primary-foreground: 210 40% 98%;
+    --primary-light: 215 89% 38%;
+    --primary-dark: 215 89% 18%;
+
+    /* Accent color - Warm Gold */
+    --accent: 43 96% 56%;
+    --accent-foreground: 20 14.3% 4.1%;
+
+    /* Secondary color - Soft Gray */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 14% 24%;
+
+    /* Background colors */
+    --background: 0 0% 100%;
+    --foreground: 220 14% 4%;
+
+    /* Card and UI elements */
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 4%;
+
+    /* Muted elements */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 14% 44%;
+
+    /* Feedback colors */
+    --success: 142 72% 29%;
+    --success-foreground: 144 70% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --info: 199 89% 48%;
+    --info-foreground: 200 98% 98%;
+
+    /* UI elements */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 215 89% 28%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Main brand color - Deep Navy Blue (darker variant) */
+    --primary: 215 89% 32%;
+    --primary-foreground: 210 40% 98%;
+    --primary-light: 215 89% 42%;
+    --primary-dark: 215 89% 22%;
+
+    /* Accent color - Warm Gold (adjusted for dark mode) */
+    --accent: 43 96% 64%;
+    --accent-foreground: 20 14.3% 4.1%;
+
+    /* Secondary color - Dark Gray */
+    --secondary: 220 14% 16%;
+    --secondary-foreground: 220 14% 92%;
+
+    /* Background colors */
+    --background: 220 14% 8%;
+    --foreground: 220 14% 98%;
+
+    /* Card and UI elements */
+    --card: 220 14% 10%;
+    --card-foreground: 220 14% 98%;
+    --popover: 220 14% 10%;
+    --popover-foreground: 220 14% 98%;
+
+    /* Muted elements */
+    --muted: 220 14% 16%;
+    --muted-foreground: 220 14% 64%;
+
+    /* Feedback colors */
+    --success: 142 72% 34%;
+    --success-foreground: 144 70% 98%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 48 96% 98%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 98%;
+    --info: 199 89% 53%;
+    --info-foreground: 200 98% 98%;
+
+    /* UI elements */
+    --border: 220 13% 16%;
+    --input: 220 13% 16%;
+    --ring: 215 89% 32%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom utility classes for gradients */
+@layer utilities {
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-primary via-primary-light to-primary-dark;
+  }
+  
+  .bg-gradient-accent {
+    @apply bg-gradient-to-r from-accent to-primary-light;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .card-shadow {
+    @apply shadow-lg shadow-primary/5;
+  }
+
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-md dark:bg-gray-900/80;
+  }
+}
