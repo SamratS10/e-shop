@@ -18,6 +18,7 @@ import ShopAccount from './pages/shopPages/account'
 import ProtectRoute from './components/protectedRoute/protectRoute'
 import UnAuth from './pages/unauthPage/unauth'
 import { useSelector } from 'react-redux'
+import LandingPage from './pages/landing'
 //import { LogIn } from 'lucide-react'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<LandingPage/>}/>
         <Route path="/auth" element={
           <ProtectRoute isAuth={isAuthenticated} user={user}>
             <UserAuthentication/>
