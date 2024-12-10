@@ -30,7 +30,7 @@ const Hero = ()=> {
           <div className="flex items-center gap-8 pt-8">
             <div className="flex flex-col items-center">
               <span className="text-3xl font-bold gradient-text">10k+</span>
-              <span className="text-sm text-muted-foreground">Active Stores</span>
+              <span className="text-sm text-muted-foreground">Products</span>
             </div>
             <div className="flex flex-col items-center">
               <span className="text-3xl font-bold gradient-text">99.9%</span>

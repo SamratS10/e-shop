@@ -10,7 +10,7 @@ const AdminHeader = ({setOpen}) => {
   const navigate = useNavigate()
   const handleLogout = () => {
     dispatch(logout());
-    navigate('/auth/login'); // Redirect to login page after logout
+    navigate('/'); // Redirect to login page after logout
 };
   return (
     <header className="flex justify-between items-center px-4 py-3 bg-gradient-accent border-b sticky top-0 z-50">
