@@ -1,10 +1,13 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
+import ShopHeader from './shopHeader'
 
 const ShopLayout = () => {
   return (
     <div>
-      <h1>shop layout</h1>
+      <div>
+        <ShopHeader/>
+      </div>
       <div>
         <Outlet/>
       </div>
